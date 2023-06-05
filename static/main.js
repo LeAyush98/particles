@@ -14,7 +14,7 @@ window.addEventListener("mousemove", function(e){
         var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
         mouse.x = touch.pageX;
         mouse.y = touch.pageY;
-    } else if (e.type == 'mousedown' || e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover'|| e.type=='mouseout' || e.type=='mouseenter' || e.type=='mouseleave') {
+    } else if (e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover' || e.type=='mouseenter' || e.type=='mouseleave') {
         mouse.x = e.clientX;
         mouse.y = e.clientY;
     }
@@ -27,6 +27,21 @@ window.addEventListener("resize", function(){
     mouse.radius = (canvas.width/100) * (canvas.height/100);
     init();
 })
+
+window.addEventListener("mouseout", function(e){
+    if(e.type == "mouseout") {
+        mouse.x = undefined;
+        mouse.y = undefined;
+    }
+
+    else if (e.type == 'touchend' || e.type == 'touchcancel'){
+        var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+        mouse.x = undefined;
+        mouse.y = undefined;
+    }
+}
+)
+
 
 class ParticleBoi{
     constructor(x, y, dx, dy, size){
