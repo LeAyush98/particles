@@ -128,10 +128,11 @@ function animate(){
     connect();
 }
 
-let particlesArray = [];
+let particlesArray;
 
 function init(){
-    numberOfParticles = (canvas.width * canvas.height) / 9000;
+    particlesArray = [];
+    numberOfParticles = (canvas.width * canvas.height) / 12000;
     for (let i = 0; i < numberOfParticles; i++){
         let size = (Math.random() * 5) + 1;
         let dx = (Math.random() * 5) - 2.5;
